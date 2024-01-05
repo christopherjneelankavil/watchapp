@@ -1,8 +1,15 @@
+
+import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,8 +27,11 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         color: const Color.fromARGB(255, 190, 185, 185),
         child:  Center(
-          child: ElevatedButton(onPressed: (){
-            //Material
+          child: ElevatedButton(onPressed: ()async{
+            //Mic access google assistant
+            await LaunchApp.openApp(
+              androidPackageName: 'com.google.android.apps.googleassistant',
+            );
           },
             style: ButtonStyle(
               shape: MaterialStateProperty.all(const CircleBorder()),
